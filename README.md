@@ -1,0 +1,2 @@
+# SpaceNews
+Our hackathon project
