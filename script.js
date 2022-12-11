@@ -1,19 +1,22 @@
 function addEmail() {
-    const fs = require('fs')
     //read json file and stores into variable json
-    let json = get("https://test.dhruvasrinivasa.repl.co/read", {
-        method: "GET",
-        headers: {},
-    })
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET","https://test.dhruvasrinivasa.repl.co/",   
+    false); // false for synchronous request
+    xmlHttp.send(null);
+    console.log(xmlHttp.responseText)
+    let json = eval(xmlHttp.responseText)
+    let newLat = null
+    let newLong = null
     //gets new email, name and location
-    var newEmail = Document.getElementById("email")
-    var newName = Document.getElementById("name")
+    var newEmail = document.getElementById("email")
+    var newName = document.getElementById("name")
     navigator.geolocation.getCurrentPosition((position => {
-        let newLat = position.lat
-        let newLong = position.long
+        newLat = position.lat
+        newLong = position.long
     }, console.log));
     //adds to json
-    json.add({
+    json.push({
         email: newEmail,
         name: newName,
         lat: newLat,
@@ -21,8 +24,8 @@ function addEmail() {
         hadIssRecently: 0
     })
     //updates file
-    get("https://Test.dhruvasrinivasa.repl.co/"+json, {
-        method: "GET",
-        headers: {}
-    })
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET","https://test.dhruvasrinivasa.repl.co/"+JSON.stringify(json),   
+    false); // false for synchronous request
+    xmlHttp.send( null );
 }
