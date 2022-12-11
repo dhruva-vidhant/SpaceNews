@@ -9,8 +9,9 @@ function addEmail() {
     let newLat = null
     let newLong = null
     //gets new email, name and location
-    var newEmail = document.getElementById("email")
-    var newName = document.getElementById("name")
+    var newEmail = document.getElementById("email").value
+    var newName = document.getElementById("name").value
+    console.log(newName)
     navigator.geolocation.getCurrentPosition((position => {
         newLat = position.lat
         newLong = position.long
