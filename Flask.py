@@ -1,15 +1,18 @@
-def base_page():
-	return render_template(
-		'index.html',  # Template file path, starting from the templates folder. 
-	)
+from flask import Flask
 
-@app.route('/<name>/<email>')
-def index(name, email):
-	file_object = open(r"email.json", "a")
-	file
+app = Flask(__name__)
 
 
-@app.route('/read')
-def readFile():
-	file_object = open("email.json")
-	return eval(file_object.read())
+
+
+@app.route('/<json>')
+def index(json):
+    file_object = open("email.json", "w")
+    file_object.write(json)
+
+@app.route('/')
+def read():
+  reader = open("email.json", "r")
+  return reader.read()
+
+app.run(host='0.0.0.0', port=81)
