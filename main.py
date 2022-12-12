@@ -11,8 +11,7 @@ import PIL
 f = open('emails.json')
 data = json.load(f)
 
-MY_EMAIL = "vs8669@pleasantonusd.net" 
-
+MY_EMAIL = ADD EMAIL HERE
 def is_iss_overhead():
     iss_response = requests.get(url="http://api.open-notify.org/iss-now.json")
     iss_response.raise_for_status()
@@ -26,7 +25,7 @@ def is_iss_overhead():
         return True
 
 def nasa_potd():
-    potd_response = requests.get(url="https://api.nasa.gov/planetary/apod?api_key=400P1jka66b2LSP5d0JAHc4ZCsliec5C9wcUs1HK")
+    potd_response = requests.get(url="API GOES HERE")
     potd_response.raise_for_status()
     potd_data = potd_response.json()
     potd_image = float(potd_data["hdurl"])
